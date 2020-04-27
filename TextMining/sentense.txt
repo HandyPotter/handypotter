@@ -1,0 +1,26 @@
+{"alternatives": [
+        {
+          "transcript": "나는 배가 고프다",
+          "confidence": 0.98267895
+        }
+      ],
+
+"alternatives": [
+        {
+          "transcript": "나는 오늘 팝콘과 콜라를 먹으며 영화를 봤다",
+          "confidence": 0.67234895
+        }
+      ],
+"alternatives": [
+        {
+          "transcript": "1919년 봄 한국 독립을 지지하는 평화 시위 동참에 대해 부름을 받았을 때 유관순이라는 이름의 한 16세 여학생은 자유를 염원하는 민족의 집단적 갈망을 상징하는 얼굴이 되었다.",
+          "confidence": 0.98267895
+        }
+      ],
+"alternatives": [
+        {
+          "transcript": "유관순은 미국 선교사들이 설립한, 한국 여성을 위한 첫 현대 교육기관인 서울에 있는 이화학당의 학생이었다.",
+          "confidence": 0.67234895
+        }
+      ]
+}

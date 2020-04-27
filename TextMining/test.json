@@ -1,14 +1,25 @@
-{
-    "alternatives": [
-            {
-              "transcript": "나는 배가 고프다",
-              "confidence": 0.98267895
-            }
-          ],
-    "alternatives": [
-            {
-              "transcript": "나는 오늘 팝콘과 콜라를 먹으며 영화를 봤다",
-              "confidence": 0.67234895
-           }
-          ]
+{ "alternatives": [
+        {
+          "transcript": "나는 배가 고프다",
+          "confidence": 0.98267895
+        }
+      ],
+  "alternatives": [
+        {
+          "transcript": "나는 오늘 팝콘과 콜라를 먹으며 영화를 봤다",
+          "confidence": 0.67234895
+        }
+      ],
+  "alternatives": [
+        {
+          "transcript": "새로나온 휴대폰은 배터리 교체가 되지 않아 불편하다",
+          "confidence": 0.67234895
+        }
+      ],
+  "alternatives": [
+        {
+          "transcript": "뭔가가 있을 것이라 기대했지만, 첫 장에서부터 요즘 우리의 상황과 견주어 딱 들어맞는 내용이어서 긴장하게 되었다",
+          "confidence": 0.67234895
+        }
+      ]
 }
