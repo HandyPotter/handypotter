@@ -18,7 +18,6 @@ curs.execute(sql)
 rows = curs.fetchall()
 
 
-
 #####  Sign Language 형태소 태깅   #####
 SL_list = []
 
@@ -34,8 +33,12 @@ result_SL = []
 for word in SL_list:
     id = SL_list.index(word) + 1
     w = mecab.pos(word)
+    print(w)
+    stoptags = ['JKS', 'SF', 'XSN', 'EC', 'EP', 'VX', 'NNB', 'EF', 'JX', 'EP+EF', 'XSV', 'XSA', 'XSN']
     for t in w:
-        if t[1] == 'NNP' or t[1] == 'NNG' or t[1] == 'NP' or t[1] == 'VV' or t[1] == 'VA':
+        if t[1] in stoptags:
+            print("불용어")
+        else:
             result_SL.append([id, t[0]])
 
 print(result_SL)

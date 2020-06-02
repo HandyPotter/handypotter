@@ -16,14 +16,11 @@ class Textmining():
     def voice2Text():
 
 
-        fname = r'/home/ubuntu/handypotter/test.json'
+        fname = r'/home/ubuntu/handypotter/v2t.txt'
 
         with open(fname, mode='r', buffering=-1, encoding="UTF-8") as fp:
-            data = json.loads(fp.read())
-
-        for item in data['alternatives']:
-            text = item['transcript']
-            print(text)
+            text = fp.read()
+        fp.close
 
         mecab = Mecab()
 
@@ -32,19 +29,10 @@ class Textmining():
         # 품사 구분하여 고유명사, 명사, 동사, 형용사 출력
         tagged_list = mecab.pos(text)
 
-        sentence_token = [t[0] for t in tagged_list if
-                          t[1] == 'NNP' or t[1] == 'NNG' or t[1] == 'NP' or t[1] == 'VV' or t[1] == 'VA']
+        tags = ['NNP', 'NNG', 'NP', 'VV', 'VA', 'MAG']
+        stoptags = ['JKS', 'SF', 'XSN', 'EC', 'EP', 'VX', 'NNB', 'EF', 'JX', 'EP+EF', 'XSV', 'XSA', 'XSN']
 
-        pnouns_tokens = [t[0] for t in tagged_list if t[1] == 'NNP']
-        nouns_tokens = [t[0] for t in tagged_list if t[1] == 'NNG']
-        pronouns_tokens = [t[0] for t in tagged_list if t[1] == 'NP']
-        verb_tokens = [t[0] for t in tagged_list if t[1] == 'VV']
-        adjective_tokens = [t[0] for t in tagged_list if t[1] == 'VA']
-
-        #verb = verb_tokens[0] + '다'
-        #adjective = adjective_tokens[0] + '다'
-
-        #sentence_token = pronouns_tokens + nouns_tokens + pnouns_tokens + verb + adjective
+        sentence_token = [t[0] for t in tagged_list if t[1] in tags]
 
         return sentence_token
 
@@ -52,6 +40,7 @@ class Textmining():
     def emoDictionary(sentence):
         wb = openpyxl.load_workbook(r"/home/ubuntu/handypotter/EmotionDictionary.xlsx")
         sheet = wb['Sheet1']
+        result_emo = []
 
         mecab = Mecab()
         emotions = []
@@ -67,57 +56,34 @@ class Textmining():
             all_emo.append(단어)
             emotions.append(emotion)
 
-
         sentence_emo = list(set(sentence).intersection(all_emo))
+
+        print(sentence_emo)
+
+        count_emo = len(sentence_emo)
 
         if not sentence_emo:
             result_emo = (0, '감정없음', '중성')
-
         else:
-            print(sentence_emo)
-
-            emo_num = all_emo.index(sentence_emo[0])
-            result_emo = emotions[emo_num]
+            for t in range(count_emo):
+                emo_num = all_emo.index(sentence_emo[t])
+                result_emo.append(emotions[emo_num])
 
         print(result_emo)
 
-        return result_emo
+        returnemo = []
+        extraction_Emo = len(result_emo)
+        for a in range(extraction_Emo):
+            emo = result_emo[a]
+            returnemo.append(emo[2])
+
+
+        print(returnemo)
+        return returnemo
 
 
 if __name__ == "__main__":
     test = Textmining
-    result = test.emoDictionary(sentence=test.voice2Text())
+    result = test.emoDictionary(sentence = test.voice2Text())
 
-    print("지금 기분은 : ", result[2])
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#다른 감정 사전
-#KnuInstance = knusl.KnuSL
-#for t in sentense_token:
-#    word = t
-#    print(word)
-#    KnuInstance.data_list(word)
-
-
-
-
-
-
-
-
-
+    print("지금 기분은 : ", result)

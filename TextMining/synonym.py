@@ -2,6 +2,8 @@ import gensim
 
 import comparingSL
 from textmining import *
+from collections import OrderedDict
+
 
 class Synonym():
 
@@ -13,52 +15,40 @@ class Synonym():
 
         TM = Textmining.voice2Text()
         size = len(TM)
-        SL_word = []
-
-        print("TM : ", TM)
-
-        for a in range(size):
-            #print("추출된 형태소 : ", TM[a])
-            SL_word.append((a, TM[a]))
-            for i, num in model.wv.most_similar(TM[a]):
-                #print(i, num)
-                SL_word.append((a, i))
-
-        return SL_word
-
-
-    def compareDB(synword, slword):
-
         same = []
 
+        tags = ['NNP','NNG','NP','VV','VA','MAG']
+        stoptags = ['JKS', 'SF', 'XSN', 'EC', 'EP', 'VX', 'NNB', 'EF', 'JX', 'EP+EF', 'XSV', 'XSA', 'XSN']
 
-        print(slword)
-        for t in synword:
-            for a in slword:
-                if t[1] == a[1]:
-                    same.append(a)
+        print("추출된 형태소 : ", TM)
+        slword = comparingSL.result_SL
+
+        for a in range(size):
+
+            token = TM[a]
+            for b in slword:
+                if token == b[1]:
+                    same.append((b))
+                else:
+                    for i in model.wv.most_similar(token):
+                        if not model.wv.most_similar(token):
+                            print("명동형인데 동의어 없음")
+                        else:
+                            if i[1] == b[1]:
+                                same.append((b))
 
         return same
 
+    def getresult():
 
-if __name__ == "__main__":
+        synword = Synonym.mor2Syn()
+        finalSL = []
 
-    synword = Synonym.mor2Syn()
-    slword = comparingSL.result_SL
-    finalSL = []
+        for i in synword:
+            id = i[0]
+            finalSL.append(id)
 
-    result = Synonym.compareDB(synword, slword)
+        print("\n\n수어비교 결과 : ", synword)
+        print("\n 최종 수어 ID : ", finalSL)
 
-    print(type(result))
-
-    for i in result:
-        id = i[0]
-        finalSL.append(id)
-    #print("동의어 : ", result)
-
-    print("\n\n수어비교 결과 : ", result)
-    print("\n 최종 수어 ID : ", finalSL)
-
-
-
-
+        return finalSL
