@@ -15,7 +15,6 @@ class Textmining():
 
     def voice2Text():
 
-
         fname = r'/home/ubuntu/handypotter/v2t.txt'
 
         with open(fname, mode='r', buffering=-1, encoding="UTF-8") as fp:
@@ -28,11 +27,13 @@ class Textmining():
 
         # 품사 구분하여 고유명사, 명사, 동사, 형용사 출력
         tagged_list = mecab.pos(text)
+        print(tagged_list)
 
-        tags = ['NNP', 'NNG', 'NP', 'VV', 'VA', 'MAG']
+        tags = ['NNP', 'NNG', 'NP', 'VV', 'VA', 'MAG', 'XR']
         stoptags = ['JKS', 'SF', 'XSN', 'EC', 'EP', 'VX', 'NNB', 'EF', 'JX', 'EP+EF', 'XSV', 'XSA', 'XSN']
 
         sentence_token = [t[0] for t in tagged_list if t[1] in tags]
+        print(sentence_token)
 
         return sentence_token
 
@@ -49,21 +50,23 @@ class Textmining():
         for row in sheet.iter_rows(min_row=2, max_col=3, max_row=428):
             번호 = row[0].row
             pre_emo = (row[1].value)
-            pre_emo = mecab.pos(pre_emo)
-            단어 = pre_emo[0][0]
-            감정 = row[2].value
-            emotion = (번호, 단어, 감정)
-            all_emo.append(단어)
-            emotions.append(emotion)
+            try:
+                pre_emo = mecab.pos(pre_emo)
+                단어 = pre_emo[0][0]
+                감정 = row[2].value
+                emotion = (번호, 단어, 감정)
+                all_emo.append(단어)
+                emotions.append(emotion)
+            except:
+                print("감정사전에 없음")
+
 
         sentence_emo = list(set(sentence).intersection(all_emo))
-
-        print(sentence_emo)
-
         count_emo = len(sentence_emo)
 
+        returnemo = []
         if not sentence_emo:
-            result_emo = (0, '감정없음', '중성')
+            result_emo.append((0, '감정없음', '중성'))
         else:
             for t in range(count_emo):
                 emo_num = all_emo.index(sentence_emo[t])
@@ -71,12 +74,10 @@ class Textmining():
 
         print(result_emo)
 
-        returnemo = []
         extraction_Emo = len(result_emo)
         for a in range(extraction_Emo):
             emo = result_emo[a]
             returnemo.append(emo[2])
-
 
         print(returnemo)
         return returnemo
