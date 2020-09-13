@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:ignore="MissingConstraints">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:background="#87BCBF"
+                android:id="@+id/background"/>
+
+            <TextView
+                android:id="@+id/searchtext"
+                android:layout_width="260dp"
+                android:layout_height="110dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="70dp"
+                android:text="수어 사전\n검색하기"
+                android:textColor="#FFFFFF"
+                android:textSize="30dp"
+                android:textStyle="bold" />
+
+
+            <EditText
+                android:id="@+id/search_field"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/searchtext"
+                android:layout_marginLeft="20dp"
+                android:layout_alignStart="@+id/searchtext"
+                android:layout_alignLeft="@+id/searchtext"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/search_layout"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="10dp"
+                android:hint="search"
+                android:textColor="#999999"
+                android:textSize="16sp" />
+
+
+            <ImageButton
+                android:id="@+id/searchBtn"
+                android:layout_width="40dp"
+                android:layout_height="42dp"
+                android:layout_below="@+id/searchtext"
+                android:layout_alignLeft="@+id/search_field"
+                android:layout_marginLeft="220dp"
+                android:background="@drawable/searchbtn_layout"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
+                android:src="@drawable/search"
+                android:scaleType="fitCenter"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/themetxt"
+                android:text="테마별 수어 배워보기"
+                android:textColor="#1B1C20"
+                android:textSize="18dp"
+                android:layout_below="@+id/background"
+                android:background="#FFFFFF"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"/>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_theme_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:layout_below="@+id/themetxt"
+                android:orientation="horizontal"
+                android:scrollbars="horizontal"
+                tools:ignore="MissingConstraints" />
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

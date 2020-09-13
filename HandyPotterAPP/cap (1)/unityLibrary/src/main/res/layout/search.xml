@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:background="#ffffff">
+
+        <TextView
+            android:id="@+id/SL_ID"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:textColor="#141031"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/SL_WORD"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:textColor="#141031"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/SL_Theme"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textColor="#141031"
+            android:text="TextView" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

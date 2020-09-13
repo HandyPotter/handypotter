@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="xx">⠀</string>
+    <string name="app_name">　　　　　Handy Potter</string>
+    <string name="intrologo" />
+    <string name="linebylinesub" />
+    <string name="mic" />
+    <string name="subtitle" />
+    <string name="unityplayer" />
+    <string name="interpret">Interpret</string>
+    <string name="show_sub">Show sub</string>
+    <string name="show_subtitle">show subtitle</string>
+    <string name="str_start" />
+    <string name="str_stop" />
+    <string name="record">RECORD</string>
+    <string name="ccc">CCC</string>
+    <string name="검색">자막보기</string>
+    <string name="마이크">마이크</string>
+    <string name="자막">자막</string>
+    <string name="sub">sub</string>
+    <string name="empty">⠀</string>
+    <string name="sdf">sdf</string>
+    <string name="textview">textview</string>
+    <string name="_3rdscreen">3rdscreen</string>
+    <string name="inputtext">텍스트를 입력하세요.</string>
+    <string name="blank">⠀</string>
+    <string name="actionbar">actionbar</string>
+    <string name="dsfsfsfsfsdf">\'dsfsfsfsfsdf\'</string>
+
+
+</resources>
