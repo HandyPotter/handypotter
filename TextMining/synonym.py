@@ -1,9 +1,8 @@
 import gensim
 
-import comparingSL
+import comparingDB
 from textmining import *
 from collections import OrderedDict
-
 
 class Synonym():
 
@@ -17,25 +16,26 @@ class Synonym():
         size = len(TM)
         same = []
 
-        tags = ['NNP','NNG','NP','VV','VA','MAG']
+        tags = ['NNP', 'NNG', 'NP', 'VV', 'VA', 'MAG', 'XR']
         stoptags = ['JKS', 'SF', 'XSN', 'EC', 'EP', 'VX', 'NNB', 'EF', 'JX', 'EP+EF', 'XSV', 'XSA', 'XSN']
 
         print("추출된 형태소 : ", TM)
-        slword = comparingSL.result_SL
+        slword = comparingDB.querySQL()
 
         for a in range(size):
-
             token = TM[a]
             for b in slword:
                 if token == b[1]:
                     same.append((b))
                 else:
-                    for i in model.wv.most_similar(token):
-                        if not model.wv.most_similar(token):
-                            print("명동형인데 동의어 없음")
-                        else:
+                    try:
+                        for i in model.wv.most_similar(token):
                             if i[1] == b[1]:
                                 same.append((b))
+                    except Exception:
+                        print("명동형인데 동의어 없음")
+
+        print("DB와 비교된 후", same)
 
         return same
 
@@ -52,3 +52,8 @@ class Synonym():
         print("\n 최종 수어 ID : ", finalSL)
 
         return finalSL
+
+
+if __name__ == "__main__":
+    test = Synonym.mor2Syn()
+    result = Synonym.getresult()
